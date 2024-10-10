@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/Background.jpg</file>
+        <file>image/bedroom.png</file>
+        <file>image/booking.png</file>
+        <file>image/check-in.png</file>
+        <file>image/check-out.png</file>
+        <file>image/history-book.png</file>
+        <file>image/notification-bell.png</file>
+        <file>main.qml</file>
+        <file>ui/Room/Room.qml</file>
+        <file>ui/CheckIn/CheckIn.qml</file>
+        <file>ui/Booking/Booking.qml</file>
+        <file>ui/CheckOut/CheckOut.qml</file>
+        <file>ui/History/History.qml</file>
+        <file>image/triple.png</file>
+        <file>image/twin.png</file>
+        <file>image/vip.png</file>
+    </qresource>
+</RCC>
