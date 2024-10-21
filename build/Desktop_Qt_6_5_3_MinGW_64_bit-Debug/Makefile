@@ -355,6 +355,7 @@ Makefile: ../../HOTEL_APP.pro D:/QT_DESIGNER/6.5.3/mingw_64/mkspecs/win32-g++/qm
 		D:/QT_DESIGNER/6.5.3/mingw_64/mkspecs/features/yacc.prf \
 		D:/QT_DESIGNER/6.5.3/mingw_64/mkspecs/features/lex.prf \
 		../../HOTEL_APP.pro \
+		D:/QT_DESIGNER/6.5.3/mingw_64/lib/Qt6QuickControls2.prl \
 		D:/QT_DESIGNER/6.5.3/mingw_64/lib/Qt6Quick.prl \
 		D:/QT_DESIGNER/6.5.3/mingw_64/lib/Qt6OpenGL.prl \
 		D:/QT_DESIGNER/6.5.3/mingw_64/lib/Qt6Gui.prl \
@@ -652,6 +653,7 @@ D:/QT_DESIGNER/6.5.3/mingw_64/mkspecs/features/exceptions.prf:
 D:/QT_DESIGNER/6.5.3/mingw_64/mkspecs/features/yacc.prf:
 D:/QT_DESIGNER/6.5.3/mingw_64/mkspecs/features/lex.prf:
 ../../HOTEL_APP.pro:
+D:/QT_DESIGNER/6.5.3/mingw_64/lib/Qt6QuickControls2.prl:
 D:/QT_DESIGNER/6.5.3/mingw_64/lib/Qt6Quick.prl:
 D:/QT_DESIGNER/6.5.3/mingw_64/lib/Qt6OpenGL.prl:
 D:/QT_DESIGNER/6.5.3/mingw_64/lib/Qt6Gui.prl:

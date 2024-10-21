@@ -1,8 +1,9 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 Rectangle{
     id: room
-    width: 800
+    width: 820
     height: 400
     anchors.horizontalCenter: parent.horizontalCenter
     y: 150
@@ -39,23 +40,31 @@ Rectangle{
         radius: 5
         color: "#E4B14D"
     }
-
+    Calendar{
+        id: calendar
+        x : 20
+        anchors{
+            left: room.Left
+            top: all_room.bottom
+        }
+    }
     Row{
         id: row1
         anchors{
-            left: room.left
+            left: calendar.right
             top: all_room.bottom
-            topMargin: 10
+            topMargin: 20
+            leftMargin: 50
             margins: 40
         }
         spacing: 30
         Repeater {
-            model: 8
+            model: 5
             Rectangle {
                 width: 64
                 height: 64
                 radius: 10
-                color:dbManager.checkRoom(101 + model.index) ? "white" : "#E4B14D"
+                color:HOTEL.inforRoom(calendar.data_day,101 + model.index) ? "white" : "#E4B14D"
                 border.color: "black"
                 Text {
                     anchors.centerIn: parent
@@ -68,7 +77,7 @@ Rectangle{
                     anchors.fill: parent
                     onClicked: {
                         showInfo = !showInfo;
-                        dbManager.printDataRoom(101 + model.index);
+                        HOTEL.inforRoom(calendar.data_day,101 + model.index);
                     }
                 }
             }
@@ -77,19 +86,19 @@ Rectangle{
     Row{
         id: row2
         anchors{
-            left: room.left
+            left: calendar.right
             top: row1.top
             topMargin: 80
-            leftMargin: 40
+            leftMargin: 50
         }
         spacing: 30
         Repeater {
-            model: 8
+            model: 5
             Rectangle {
                 width: 64
                 height: 64
                 radius: 10
-                color: dbManager.checkRoom(201 + model.index) ? "white" : "#E4B14D"
+                color: HOTEL.inforRoom(calendar.data_day,201 + model.index) ? "white" : "#E4B14D"
                 border.color: "black"
                 Text {
                     anchors.centerIn: parent
@@ -102,7 +111,7 @@ Rectangle{
                     anchors.fill: parent
                     onClicked: {
                         showInfo = !showInfo;
-                        dbManager.printDataRoom(201 + model.index);
+                        HOTEL.inforRoom(calendar.data_day,201 + model.index);
                     }
                 }
             }
@@ -111,19 +120,19 @@ Rectangle{
     Row{
         id: row3
         anchors{
-            left: room.left
+            left: calendar.right
             top: row2.top
             topMargin: 80
-            leftMargin: 40
+            leftMargin: 50
         }
         spacing: 30
         Repeater {
-            model: 8
+            model: 5
             Rectangle {
                 width: 64
                 height: 64
                 radius: 10
-                color:dbManager.checkRoom(301 + model.index) ? "white" : "#E4B14D"
+                color:HOTEL.inforRoom(calendar.data_day,301 + model.index) ? "white" : "#E4B14D"
                 border.color: "black"
                 Text {
                     anchors.centerIn: parent
@@ -136,7 +145,7 @@ Rectangle{
                     anchors.fill: parent
                     onClicked: {
                         showInfo = !showInfo;
-                        dbManager.printDataRoom(301 + model.index);
+                        HOTEL.inforRoom(calendar.data_day,301 + model.index);
                     }
                 }
             }
@@ -145,19 +154,19 @@ Rectangle{
     Row{
         id: row4
         anchors{
-            left: room.left
+            left: calendar.right
             top: row3.top
             topMargin: 80
-            leftMargin: 40
+            leftMargin: 50
         }
         spacing: 30
         Repeater {
-            model: 8
+            model: 5
             Rectangle {
                 width: 64
                 height: 64
                 radius: 10
-                color:dbManager.checkRoom(401 + model.index) ? "white" : "#E4B14D"
+                color:HOTEL.inforRoom(calendar.data_day,401 + model.index) ? "white" : "#E4B14D"
                 border.color: "black"
                 Text {
                     anchors.centerIn: parent
@@ -170,7 +179,7 @@ Rectangle{
                     anchors.fill: parent
                     onClicked: {
                         showInfo = !showInfo;
-                        dbManager.printDataRoom(401 + model.index);
+                        HOTEL.inforRoom(calendar.data_day,401 + model.index);
                     }
                 }
             }
@@ -178,8 +187,8 @@ Rectangle{
     }
     Rectangle {
         id: infor
-        width: 400
-        height: 250
+        width: 440
+        height: 280
         radius: 20
         color: "#E4B14D"
         border.color: "black"
@@ -189,9 +198,9 @@ Rectangle{
         Text {
             anchors.centerIn: parent
             color: "black"
-            text:dbManager.dataRoom
+            text:HOTEL.room
             font.bold: true
-            font.pointSize: 16
+            font.pointSize: 14
         }
     }
 }

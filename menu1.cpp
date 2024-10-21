@@ -5,9 +5,10 @@ menu1::menu1(QObject *parent) : QObject{parent}
     , m_currentTime("00:00AM")
 {    m_current_timer = new QTimer(this);
     m_current_timer->setInterval(500);
-    m_current_timer->setSingleShot(true);
+    m_current_timer->setSingleShot(false);
     connect(m_current_timer,&QTimer::timeout, this, &menu1 :: current_timer_timeout);
     current_timer_timeout();
+    m_current_timer->start();
 }
 
 QString menu1::currentTime() const

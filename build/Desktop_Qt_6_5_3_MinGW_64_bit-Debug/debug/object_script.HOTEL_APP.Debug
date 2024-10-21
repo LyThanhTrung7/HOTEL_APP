@@ -1,0 +1,11 @@
+debug/actionhotel.o
+debug/databasehotel.o
+debug/main.o
+debug/menu1.o
+debug/room.o
+debug/tripleroom.o
+debug/twinroom.o
+debug/viproom.o
+debug/qrc_qml.o
+debug/moc_actionhotel.o
+debug/moc_menu1.o

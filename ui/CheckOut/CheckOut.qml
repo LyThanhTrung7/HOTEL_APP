@@ -9,7 +9,9 @@ Rectangle{
     anchors.horizontalCenter: parent.horizontalCenter
     y: 150
     radius: 50
-    property int type: 0
+    property string type: ""
+    property bool checkout: false
+
     Text{
         id: checkOut
         anchors.horizontalCenter: parent.horizontalCenter
@@ -58,11 +60,11 @@ Rectangle{
             }
             onActivated: {
                 if (select_room.currentIndex === 1) {
-                    check_in.type = 1;
+                    check_in.type = "Twin Room";
                 } else if (select_room.currentIndex === 2) {
-                    check_in.type = 2;
+                    check_in.type = "Triple Room";
                 }else if (select_room.currentIndex === 3) {
-                    check_in.type = 3;
+                    check_in.type = "Vip Room";
                 }
             }
         }
@@ -154,16 +156,56 @@ Rectangle{
             }
             onClicked: {
                 var number = parseInt(room_number.text);
-                dbManager.checkInOut(number,customer_name.text,check_in.type,0,1);
+                HOTEL.checkout(number,check_in.type);
+                check_out.checkout = true;
             }
         }
-        Text{
+        Rectangle {
             id: note_checkout
-            text:dbManager.checkIn
-            anchors{
-                top:bt_checkout.bottom
-                topMargin: 20
-                horizontalCenter: customer_note.horizontalCenter
+            width: 500
+            height: 300
+            radius: 20
+            color: "#E4B14D"
+            border.color: "black"
+            visible: checkout
+            anchors.top: checkOut.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            Text {
+                anchors.centerIn: parent
+                color: "black"
+                text:HOTEL.status
+                font.bold: true
+                font.pointSize: 16
+            }
+            Button{
+                id: bt_return
+                width: 100
+                height: 30
+                anchors{
+                bottom: note_checkout.bottom;
+                margins: 10;
+                horizontalCenter: parent.horizontalCenter
+                }
+                Text{
+                    text: "Return"
+                    color: 	"black"
+                    anchors.centerIn: bt_return
+                    font.pointSize: 13
+                }
+                background: Rectangle{
+                    color: bt_return.pressed ?"#E4B14D":"white"
+                    radius: 10
+                    border.color: "black"
+                    border.width: 1
+                }
+                onClicked: {
+                   check_out.checkout = false;
+                   HOTEL.status = "";
+                   customer_name = "";
+                   customer_note = "";
+                   room_number = "";
+                   check_in.type = "";
+                }
             }
         }
     }

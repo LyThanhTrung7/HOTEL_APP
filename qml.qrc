@@ -16,5 +16,6 @@
         <file>image/triple.png</file>
         <file>image/twin.png</file>
         <file>image/vip.png</file>
+        <file>ui/Room/Calendar.qml</file>
     </qresource>
 </RCC>

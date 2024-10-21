@@ -1,0 +1,11 @@
+release/actionhotel.o
+release/databasehotel.o
+release/main.o
+release/menu1.o
+release/room.o
+release/tripleroom.o
+release/twinroom.o
+release/viproom.o
+release/qrc_qml.o
+release/moc_actionhotel.o
+release/moc_menu1.o

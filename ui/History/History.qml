@@ -4,7 +4,7 @@ import QtQuick.Layouts
 
 Rectangle{
     id: history
-    width: 800
+    width: 840
     height: 400
     anchors.horizontalCenter: parent.horizontalCenter
     y: 150
@@ -59,7 +59,7 @@ Rectangle{
 
     ScrollView {
         id: scrollView
-        width: 680
+        width: 780
         height: 320
         anchors {
             top: all_room.bottom
@@ -80,7 +80,13 @@ Rectangle{
                     Text { anchors.centerIn: parent; text: "Room"; font.bold: true }
                 }
                 Rectangle { width: 100; height: 40; color: "#E4B14D"; border.color: "black"
+                    Text { anchors.centerIn: parent; text: "Type"; font.bold: true }
+                }
+                Rectangle { width: 100; height: 40; color: "#E4B14D"; border.color: "black"
                     Text { anchors.centerIn: parent; text: "Name"; font.bold: true }
+                }
+                Rectangle { width: 100; height: 40; color: "#E4B14D"; border.color: "black"
+                    Text { anchors.centerIn: parent; text: "Phone"; font.bold: true }
                 }
                 Rectangle { width: 150; height: 40; color: "#E4B14D"; border.color: "black"
                     Text { anchors.centerIn: parent; text: "Check In"; font.bold: true }
@@ -89,23 +95,25 @@ Rectangle{
                     Text { anchors.centerIn: parent; text: "Check Out"; font.bold: true }
                 }
                 Rectangle { width: 100; height: 40; color: "#E4B14D"; border.color: "black"
-                    Text { anchors.centerIn: parent; text: "Phone Number"; font.bold: true }
-                }
-                Rectangle { width: 100; height: 40; color: "#E4B14D"; border.color: "black"
-                    Text { anchors.centerIn: parent; text: "Type Room"; font.bold: true }
+                    Text { anchors.centerIn: parent; text: "Revenue"; font.bold: true }
                 }
             }
-
             Repeater {
                 id: list
-                model: dbManager.History
+                model: HOTEL.his
                 RowLayout {
                     spacing: 2
                     Rectangle { width: 50; height: 40; color: "#FAD58B"; border.color: "black"
                         Text { anchors.centerIn: parent; text: modelData.ROOM_NUMBER }
                     }
                     Rectangle { width: 100; height: 40; color: "#FAD58B"; border.color: "black"
+                        Text { anchors.centerIn: parent; text: modelData.TYPE_ROOM }
+                    }
+                    Rectangle { width: 100; height: 40; color: "#FAD58B"; border.color: "black"
                         Text { anchors.centerIn: parent; text: modelData.CUS_NAME }
+                    }
+                    Rectangle { width: 100; height: 40; color: "#FAD58B"; border.color: "black"
+                        Text { anchors.centerIn: parent; text: modelData.CUS_NUMBER }
                     }
                     Rectangle { width: 150; height: 40; color: "#FAD58B"; border.color: "black"
                         Text { anchors.centerIn: parent; text: modelData.TIME_CHECKIN }
@@ -114,10 +122,7 @@ Rectangle{
                         Text { anchors.centerIn: parent; text: modelData.TIME_CHECKOUT }
                     }
                     Rectangle { width: 100; height: 40; color: "#FAD58B"; border.color: "black"
-                        Text { anchors.centerIn: parent; text: modelData.CUS_NUMBER }
-                    }
-                    Rectangle { width: 100; height: 40; color: "#FAD58B"; border.color: "black"
-                        Text { anchors.centerIn: parent; text: modelData.TYPE_ROOM }
+                        Text { anchors.centerIn: parent; text: modelData.REVENUE }
                     }
                 }
             }

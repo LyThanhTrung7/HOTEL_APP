@@ -9,7 +9,7 @@ Rectangle{
     anchors.horizontalCenter: parent.horizontalCenter
     y: 150
     radius: 50
-    property int type: 0
+    property string type: ""
     Text{
         id: checkIn
         anchors.horizontalCenter: parent.horizontalCenter
@@ -58,11 +58,11 @@ Rectangle{
             }
             onActivated: {
                 if (select_room.currentIndex === 1) {
-                    check_in.type = 1;
+                    check_in.type = "Twin Room";
                 } else if (select_room.currentIndex === 2) {
-                    check_in.type = 2;
+                    check_in.type = "Triple Room";
                 }else if (select_room.currentIndex === 3) {
-                    check_in.type = 3;
+                    check_in.type = "Vip Room";
                 }
             }
             TextField{
@@ -153,12 +153,12 @@ Rectangle{
                 }
                 onClicked: {
                     var number = parseInt(room_number.text);
-                    dbManager.checkInOut(number,customer_name.text,check_in.type, customer_phone.text,0);
+                    HOTEL.checkin(number,check_in.type);
                 }
             }
             Text{
                 id: note_checkin
-                text:dbManager.checkIn
+                text:HOTEL.status
                 anchors{
                     top:bt_checkin.bottom
                     topMargin: 20

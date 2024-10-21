@@ -1,14 +1,19 @@
 QT += quick sql
+QT += quick quickcontrols2
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        database_hotel.cpp \
+        actionhotel.cpp \
+        databasehotel.cpp \
         main.cpp \
         menu1.cpp \
-        roomhotel.cpp
+        room.cpp \
+        tripleroom.cpp \
+        twinroom.cpp \
+        viproom.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,6 +29,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    database_hotel.h \
+    actionhotel.h \
+    databasehotel.h \
     menu1.h \
-    roomhotel.h
+    room.h \
+    tripleroom.h \
+    twinroom.h \
+    viproom.h
+
+
+CONFIG += c++14

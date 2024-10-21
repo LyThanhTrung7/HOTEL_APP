@@ -1,7 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import QtQuick.Controls
-import QtQuick.Layouts
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 2.15
+
 import "ui/Room"
 import "ui/CheckIn"
 import"ui/Booking"
@@ -14,6 +15,8 @@ Window {
     title: qsTr("HOTEL APP")
 
     property int menu: 0
+
+
     Image {
         id: background
         source: "qrc:/image/Background.jpg"
@@ -149,7 +152,7 @@ Window {
                 anchors.fill: parent
                 onClicked: {
                     menu = 5;
-                    dbManager.getHistory();
+                    HOTEL.history(0,0);
                 }
             }
         }
@@ -211,7 +214,6 @@ Window {
     CheckOut{
         id: id_Checkout
         visible: menu == 4
-
     }
     History{
         id: id_History

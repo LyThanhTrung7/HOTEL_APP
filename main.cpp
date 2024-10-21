@@ -1,9 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <menu1.h>
 #include <QQmlContext>
-#include "database_hotel.h"
-
+#include "databasehotel.h"
+#include "actionhotel.h"
+#include "menu1.h"
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -11,11 +11,16 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
-    menu1 Menu1;
-    Database_Hotel dbManager;
 
     QQmlApplicationEngine engine;
-    dbManager.getData();
+    DataBaseHotel data;
+    data.loadRoomsFromDatabase();  // Tải dữ liệu phòng từ cơ sở dữ liệu
+
+    // Khởi tạo ActionHotel với đối tượng DataBaseHotel
+    ActionHotel hotel(data);
+
+    menu1 MENU1;
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(
         &engine,
@@ -29,7 +34,7 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     QQmlContext * context (engine.rootContext());
-    context->setContextProperty("MENU1",&Menu1);
-    context->setContextProperty("dbManager", &dbManager);
+    context->setContextProperty("HOTEL",&hotel);
+    context->setContextProperty("MENU1",&MENU1);
     return app.exec();
 }

@@ -4,7 +4,7 @@ import QtQuick.Layouts
 Rectangle{
     id: booking
     width: 800
-    height: 450
+    height: 480
     anchors.horizontalCenter: parent.horizontalCenter
     y: 150
     radius: 50
@@ -70,16 +70,10 @@ Rectangle{
                     key: "102"
                 }
                 ListElement{
-                    key: "103"
-                }
-                ListElement{
                     key: "201"
                 }
                 ListElement{
-                    key: "203"
-                }
-                ListElement{
-                    key: "206"
+                    key: "202"
                 }
                 ListElement{
                     key: "301"
@@ -88,7 +82,10 @@ Rectangle{
                     key: "302"
                 }
                 ListElement{
-                    key: "303"
+                    key: "401"
+                }
+                ListElement{
+                    key: "402"
                 }
             }
             contentItem: Text{
@@ -104,19 +101,17 @@ Rectangle{
                 } else if (select_room.currentIndex === 2) {
                     booking.room = 102;
                 }else if (select_room.currentIndex === 3) {
-                    booking.room = 103;
-                }else if (select_room.currentIndex === 4) {
                     booking.room = 201;
+                }else if (select_room.currentIndex === 4) {
+                    booking.room = 202;
                 } else if (select_room.currentIndex === 5) {
-                    booking.room = 203;
-                }else if (select_room.currentIndex === 6) {
-                    booking.room = 206;
-                }  else if (select_room.currentIndex === 7) {
                     booking.room = 301;
-                } else if (select_room.currentIndex === 8) {
+                }else if (select_room.currentIndex === 6) {
                     booking.room = 302;
-                }else if (select_room.currentIndex === 9) {
-                    booking.room = 303;
+                } else if (select_room.currentIndex === 7) {
+                    booking.room = 401;
+                }else if (select_room.currentIndex === 8) {
+                    booking.room = 402;
                 }
             }
         }
@@ -224,14 +219,73 @@ Rectangle{
                 }
             }
         }
+        Row{
+            id: time_book_out
+            anchors{
+                top: time_book.bottom
+                topMargin: 10
+            }
+            spacing: 10
+            TextField{
+                id: dayout
+                placeholderText: "Day"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: dayout.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+            TextField{
+                id: monthout
+                placeholderText: "Month"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: monthout.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+            TextField{
+                id: yearout
+                placeholderText: "Year"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: yearout.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+        }
         Button{
             id: bt_booking
             width: 100
             height: 25
             anchors{
-                top:time_book.bottom
+                top:time_book_out.bottom
                 topMargin: 10
-                horizontalCenter: time_book.horizontalCenter
+                horizontalCenter: time_book_out.horizontalCenter
             }
             Text{
                 text: "Book"
@@ -245,8 +299,8 @@ Rectangle{
                 border.width: 1
             }
             onClicked: {
-                dbManager.Booking(booking.room, customer_name.text,
-                                  year.text+"-"+month.text+"-"+day.text, 1, customer_phone.text);
+                 var phone = parseInt(customer_phone.text);
+                HOTEL.bookingRoom(booking.room,customer_name.text,phone,"Twin Room",year.text+"-"+month.text+"-"+day.text,yearout.text+"-"+monthout.text+"-"+dayout.text);
             }
         }
     }
@@ -296,28 +350,28 @@ Rectangle{
                     key: "Select Room"
                 }
                 ListElement{
+                    key: "103"
+                }
+                ListElement{
                     key: "104"
                 }
                 ListElement{
-                    key: "105"
+                    key: "203"
                 }
                 ListElement{
                     key: "204"
                 }
                 ListElement{
-                    key: "205"
+                    key: "303"
                 }
                 ListElement{
                     key: "304"
                 }
                 ListElement{
-                    key: "305"
+                    key: "403"
                 }
                 ListElement{
                     key: "404"
-                }
-                ListElement{
-                    key: "405"
                 }
             }
             contentItem: Text{
@@ -329,21 +383,21 @@ Rectangle{
             }
             onActivated: {
                 if (select_room1.currentIndex === 1) {
-                    booking.room1 = 104;
+                    booking.room1 = 103;
                 } else if (select_room1.currentIndex === 2) {
-                    booking.room1 = 105;
+                    booking.room1 = 104;
                 }else if (select_room1.currentIndex === 3) {
-                    booking.room1 = 204;
+                    booking.room1 = 203;
                 }else if (select_room1.currentIndex === 4) {
-                    booking.room1 = 205;
+                    booking.room1 = 204;
                 } else if (select_room1.currentIndex === 5) {
-                    booking.room1 = 304;
+                    booking.room1 = 303;
                 }else if (select_room1.currentIndex === 6) {
-                    booking.room1 = 305;
+                    booking.room1 = 304;
                 }  else if (select_room1.currentIndex === 7) {
-                    booking.room1 = 404;
+                    booking.room1 = 403;
                 } else if (select_room1.currentIndex === 8) {
-                    booking.room1 = 405;
+                    booking.room1 = 404;
                 }
             }
 
@@ -452,14 +506,73 @@ Rectangle{
                 }
             }
         }
+        Row{
+            id: time_book_out1
+            anchors{
+                top: time_book1.bottom
+                topMargin: 10
+            }
+            spacing: 10
+            TextField{
+                id: dayout1
+                placeholderText: "Day"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: dayout1.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+            TextField{
+                id: monthout1
+                placeholderText: "Month"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: monthout1.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+            TextField{
+                id: yearout1
+                placeholderText: "Year"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: yearout1.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+        }
         Button{
             id: bt_booking1
             width: 100
             height: 25
             anchors{
-                top:time_book1.bottom
+                top:time_book_out1.bottom
                 topMargin: 10
-                horizontalCenter: time_book1.horizontalCenter
+                horizontalCenter: time_book_out1.horizontalCenter
             }
             Text{
                 text: "Book"
@@ -473,8 +586,8 @@ Rectangle{
                 border.width: 1
             }
             onClicked: {
-                dbManager.Booking(booking.room1, customer_name1.text,
-                                  year1.text+"-"+month1.text+"-"+day1.text,2, customer_phone1.text);
+                 var phone1 = parseInt(customer_phone1.text);
+                 HOTEL.bookingRoom(booking.room1,customer_name1.text,phone1,"Triple Room",year1.text+"-"+month1.text+"-"+day1.text,yearout1.text+"-"+monthout1.text+"-"+dayout1.text);
             }
         }
     }
@@ -524,28 +637,16 @@ Rectangle{
                     key: "Select Room"
                 }
                 ListElement{
-                    key: "107"
+                    key: "105"
                 }
                 ListElement{
-                    key: "108"
+                    key: "205"
                 }
                 ListElement{
-                    key: "207"
+                    key: "305"
                 }
                 ListElement{
-                    key: "208"
-                }
-                ListElement{
-                    key: "307"
-                }
-                ListElement{
-                    key: "308"
-                }
-                ListElement{
-                    key: "407"
-                }
-                ListElement{
-                    key: "408"
+                    key: "405"
                 }
             }
             contentItem: Text{
@@ -557,21 +658,13 @@ Rectangle{
             }
             onActivated: {
                 if (select_room2.currentIndex === 1) {
-                    booking.room2 = 107;
+                    booking.room2 = 105;
                 } else if (select_room2.currentIndex === 2) {
-                    booking.room2 = 108;
+                    booking.room2 = 205;
                 }else if (select_room2.currentIndex === 3) {
-                    booking.room2 = 207;
+                    booking.room2 = 305;
                 }else if (select_room2.currentIndex === 4) {
-                    booking.room2 = 208;
-                } else if (select_room2.currentIndex === 5) {
-                    booking.room2 = 307;
-                }else if (select_room2.currentIndex === 6) {
-                    booking.room2 = 308;
-                }  else if (select_room2.currentIndex === 7) {
-                    booking.room2 = 407;
-                } else if (select_room2.currentIndex === 8) {
-                    booking.room2 = 408;
+                    booking.room2 = 405;
                 }
             }
         }
@@ -679,14 +772,73 @@ Rectangle{
                 }
             }
         }
+        Row{
+            id: time_book_out2
+            anchors{
+                top: time_book2.bottom
+                topMargin: 10
+            }
+            spacing: 10
+            TextField{
+                id: dayout2
+                placeholderText: "Day"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: dayout.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+            TextField{
+                id: monthout2
+                placeholderText: "Month"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: monthout2.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+            TextField{
+                id: yearout2
+                placeholderText: "Year"
+                placeholderTextColor: "#807B72"
+                color: "black"
+                width: 60
+                height: 30
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 10
+                leftPadding: 10
+                background: Rectangle {
+                    color: yearout2.focus ? "#B9B09D":"white"
+                    border.color: "black"
+                    border.width: 1
+                    radius: 5
+                }
+            }
+        }
         Button{
             id: bt_booking2
             width: 100
             height: 25
             anchors{
-                top:time_book2.bottom
+                top:time_book_out2.bottom
                 topMargin: 10
-                horizontalCenter: time_book2.horizontalCenter
+                horizontalCenter: time_book_out2.horizontalCenter
             }
             Text{
                 text: "Book"
@@ -700,17 +852,18 @@ Rectangle{
                 border.width: 1
             }
             onClicked: {
-                dbManager.Booking(booking.room2, customer_name2.text,
-                                  year2.text+"-"+month2.text+"-"+day2.text,3, customer_phone2.text);
+                var phoneNumber = parseInt(customer_phone2.text);
+
+                 HOTEL.bookingRoom(booking.room2,customer_name2.text, phoneNumber,"Vip Room",year2.text+"-"+month2.text+"-"+day2.text,yearout2.text+"-"+monthout2.text+"-"+dayout2.text);
             }
         }
     }
     Text{
         id: note_booking
-        text:dbManager.booking
+        text: HOTEL.book
         anchors{
             bottom:booking.bottom
-            bottomMargin: 20
+            bottomMargin: 10
             horizontalCenter: booking.horizontalCenter
         }
     }
